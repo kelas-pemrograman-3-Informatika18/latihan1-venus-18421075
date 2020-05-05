@@ -4,14 +4,17 @@ const routes = [
     path: '/',
     component: () => import('layouts/LoginLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/Login.vue') }
+      { path: '', component: () => import('pages/Login.vue') },
+      { path: 'register', component: () => import('pages/Register.vue') }
     ]
   },
   {
-    path: '/home',
+    path: '/',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/Index.vue') }
+      { path: 'home', name: 'dashboard', component: () => import('pages/Index.vue') },
+      { path: 'inputmateri', name: 'inputMateri', component: () => import('pages/InputMateri.vue') },
+      { path: 'lihatkrs', name: 'lihatKrs', component: () => import('pages/LihatKrs.vue') }
     ]
   }
 ]

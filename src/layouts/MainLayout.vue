@@ -1,7 +1,7 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
-      <q-toolbar>
+    <q-header unelevated>
+      <q-toolbar class="bg-grey-10" align="center">
         <q-btn
           flat
           dense
@@ -12,10 +12,9 @@
         />
 
         <q-toolbar-title>
-          Quasar App
+          CC
         </q-toolbar-title>
 
-        <div>Quasar v{{ $q.version }}</div>
       </q-toolbar>
     </q-header>
 
@@ -23,20 +22,42 @@
       v-model="leftDrawerOpen"
       show-if-above
       bordered
-      content-class="bg-grey-1"
+      content-class="bg-black"
     >
       <q-list>
         <q-item-label
           header
-          class="text-grey-8"
+          class="text-white"
         >
-          Essential Links
+          Menu
         </q-item-label>
-        <EssentialLink
-          v-for="link in essentialLinks"
-          :key="link.title"
-          v-bind="link"
-        />
+        <q-item clickable active-class="active" class="text-white" exact v-ripple :to="{ name: 'dashboard'}">
+          <q-item-section avatar>
+            <q-icon name="av_timer"/>
+          </q-item-section>
+
+          <q-item-section>
+            Dashboard
+          </q-item-section>
+        </q-item>
+                <q-item clickable active-class="active" class="text-white" exact v-ripple :to="{ name: 'inputMateri'}">
+          <q-item-section avatar>
+            <q-icon name="input" />
+          </q-item-section>
+
+          <q-item-section>
+            Input Materi
+          </q-item-section>
+                </q-item>
+                <q-item clickable active-class="active" class="text-white" exact v-ripple :to="{ name: 'LihatKrs'}">
+          <q-item-section avatar>
+            <q-icon name="date_range" />
+          </q-item-section>
+
+          <q-item-section>
+            Lihat KRS
+          </q-item-section>
+        </q-item>
       </q-list>
     </q-drawer>
 
@@ -47,56 +68,12 @@
 </template>
 
 <script>
-import EssentialLink from 'components/EssentialLink'
-
 export default {
   name: 'MainLayout',
 
-  components: {
-    EssentialLink
-  },
-
   data () {
     return {
-      leftDrawerOpen: false,
-      essentialLinks: [
-        {
-          title: 'Docs',
-          caption: 'quasar.dev',
-          icon: 'school',
-          link: 'https://quasar.dev'
-        },
-        {
-          title: 'Github',
-          caption: 'github.com/quasarframework',
-          icon: 'code',
-          link: 'https://github.com/quasarframework'
-        },
-        {
-          title: 'Discord Chat Channel',
-          caption: 'chat.quasar.dev',
-          icon: 'chat',
-          link: 'https://chat.quasar.dev'
-        },
-        {
-          title: 'Forum',
-          caption: 'forum.quasar.dev',
-          icon: 'record_voice_over',
-          link: 'https://forum.quasar.dev'
-        },
-        {
-          title: 'Twitter',
-          caption: '@quasarframework',
-          icon: 'rss_feed',
-          link: 'https://twitter.quasar.dev'
-        },
-        {
-          title: 'Facebook',
-          caption: '@QuasarFramework',
-          icon: 'public',
-          link: 'https://facebook.quasar.dev'
-        }
-      ]
+      leftDrawerOpen: false
     }
   }
 }

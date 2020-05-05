@@ -4,10 +4,8 @@
       <q-card class="fixed-center col-md-3 col-xs-12 bg-grey-4" flat>
         <q-card-section>
           <div class="text-h5 q-pb-md" align="center">
-
-            COSAAN-CLUB
+            Halaman Register
           </div>
-          <p class="text-h9 bg-blue-4">WEBSITE STUDY </p>
           <q-form
             @submit="onSubmit"
             @reset="onReset"
@@ -23,6 +21,22 @@
 
             <q-input
               filled
+              v-model="programStudi"
+              label="program studi"
+              lazy-rules
+              :rules="[ val => val && val.length > 0 || 'Tolong Isi Program Studi']"
+            />
+
+            <q-input
+              filled
+              v-model="namalengkap"
+              label="Nama Lengkap"
+              lazy-rules
+              :rules="[ val => val && val.length > 0 || 'Tolong Isi Nama Lengkap Anda']"
+            />
+
+            <q-input
+              filled
               type="password"
               v-model="password"
               label="Password"
@@ -31,9 +45,10 @@
                 val => val !== null && val.length > 0 || 'Password Tidak Boleh Kosong'
               ]"
             />
+
             <div class="q-gutter-md">
-              <q-btn label="Login" type="submit" color="primary"/>
-              <q-btn label="Register" to="/register" flat color="primary"/>
+              <q-btn label="Register" type="submit" color="primary"/>
+              <q-btn label="Login"  to="/" flat color="primary"/>
             </div>
         </q-form>
         </q-card-section>
@@ -46,23 +61,13 @@ export default {
   data () {
     return {
       username: null,
-      password: null
+      password: null,
+      programStudi: null,
+      namalengkap: null
     }
   },
   methods: {
     onSubmit () {
-      if (this.username === 'venus' && this.password === '18421075') {
-        this.$q.notify({
-          type: 'positive',
-          message: 'Selamat Berhasil Login'
-        })
-        this.$router.push('/home')
-      } else {
-        this.$q.notify({
-          type: 'negative',
-          message: 'Gagal Login, Username/Password Salah'
-        })
-      }
     },
     onReset () {
       this.username = null
